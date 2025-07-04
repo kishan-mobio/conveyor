@@ -1,0 +1,53 @@
+[
+  {
+    "id": "par1",
+    "name": "Parameters",
+    "components": [
+      { "id": "tag", "name": "Tag" },
+      { "id": "type", "name": "Type" },
+      { "id": "size", "name": "Size" },
+      { "id": "status", "name": "Status" }
+    ]
+  },
+  {
+    "id": "par2",
+    "name": "Configuration",
+    "components": [
+      { "id": "mode", "name": "Mode" },
+      { "id": "level", "name": "Level" },
+      { "id": "priority", "name": "Priority" },
+      { "id": "enabled", "name": "Enabled" }
+    ]
+  },
+  {
+    "id": "par3",
+    "name": "Metadata",
+    "components": [       
+      { "id": "created_by", "name": "Created By" },
+      { "id": "created_at", "name": "Created At" },
+      { "id": "modified_by", "name": "Modified By" },
+      { "id": "modified_at", "name": "Modified At" },
+      { "id": "version", "name": "Version" }
+    ]
+  },
+  {
+    "id": "par4",
+    "name": "Settings",
+    "components": [
+      { "id": "language", "name": "Language" },
+      { "id": "timezone", "name": "Timezone" },
+      { "id": "region", "name": "Region" }
+    ]
+  },
+  {
+    "id": "par5",
+    "name": "Display",
+    "components": [
+      { "id": "theme", "name": "Theme" },
+      { "id": "font_size", "name": "Font Size" },
+      { "id": "layout", "name": "Layout" },
+      { "id": "contrast", "name": "Contrast" },
+      { "id": "brightness", "name": "Brightness" }
+    ]
+  }
+]
