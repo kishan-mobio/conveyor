@@ -35,7 +35,6 @@ export default function FormPage({
   }, []);
 
   const handleSubmit = () => {
-    console.log("Form Data:", formData);
     alert("Form Submitted! Check console for data.");
   };
 

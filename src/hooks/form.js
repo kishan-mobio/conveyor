@@ -5,24 +5,23 @@ export function useFormSelections() {
   const [selectedEquipment, setSelectedEquipment] = useState(null);
   const [selectedComponent, setSelectedComponent] = useState(null);
 
-  const getEquipment = () => {
+  const getEquipmentss = () => {
     return selectionData;
   };
 
-  const getComponent = () => {
+  const getComponentss = () => {
     const selectedEquipmentObj = selectionData.find(
       (item) => item.id === selectedEquipment
     );
     return selectedEquipmentObj?.components || [];
   };
 
-  console.log(selectedEquipment, selectedComponent);
   return {
     selectedEquipment,
     setSelectedEquipment,
     selectedComponent,
     setSelectedComponent,
-    getEquipment,
-    getComponent,
+    getEquipments: getEquipmentss,
+    getComponents: getComponentss,
   };
 }

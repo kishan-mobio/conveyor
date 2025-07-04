@@ -12,8 +12,8 @@ export default function FormSelectionPage() {
     selectedComponent,
     setSelectedEquipment,
     setSelectedComponent,
-    getComponent,
-    getEquipment,
+    getComponents,
+    getEquipments,
   } = useFormSelections();
 
   return (
@@ -31,8 +31,8 @@ export default function FormSelectionPage() {
           selectedComponent={selectedComponent}
           setSelectedEquipment={setSelectedEquipment}
           setSelectedComponent={setSelectedComponent}
-          getComponent={getComponent}
-          getEquipment={getEquipment}
+          getComponents={getComponents}
+          getEquipments={getEquipments}
         />
       )}
     </div>
