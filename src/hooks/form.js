@@ -1,27 +1,24 @@
 import { useState } from "react";
 import selectionData from "@/data/selection.json";
+import { formFields } from "@/data/field";
 
 export function useFormSelections() {
-  const [selectedEquipment, setSelectedEquipment] = useState(null);
-  const [selectedComponent, setSelectedComponent] = useState(null);
-
-  const getEquipmentss = () => {
+  const getEquipments = () => {
     return selectionData;
   };
 
-  const getComponentss = () => {
+  const getComponents = (equipment) => {
     const selectedEquipmentObj = selectionData.find(
-      (item) => item.id === selectedEquipment
+      (item) => item.id === equipment
     );
     return selectedEquipmentObj?.components || [];
   };
 
+  const getFormFields = () => formFields;
+
   return {
-    selectedEquipment,
-    setSelectedEquipment,
-    selectedComponent,
-    setSelectedComponent,
-    getEquipments: getEquipmentss,
-    getComponents: getComponentss,
+    getEquipments,
+    getComponents,
+    getFormFields,
   };
 }

@@ -10,18 +10,20 @@ import {
 } from "@/components/ui/select";
 import { Label } from "@/components/ui/label";
 import { ArrowRight, Settings, FileText } from "lucide-react";
+import { useFormContext } from "@/context/formContext";
+import { useFormSelections } from "@/hooks/form";
 
-export default function Selection({
-  setShowForm,
-  selectedEquipment,
-  setSelectedEquipment,
-  selectedComponent,
-  setSelectedComponent,
-  getEquipments,
-  getComponents,
-}) {
+export default function Selection({ setShowForm }) {
+  const {
+    selectedComponent,
+    selectedEquipment,
+    setSelectedComponent,
+    setSelectedEquipment,
+  } = useFormContext();
+
+  const { getEquipments, getComponents } = useFormSelections();
   const equipments = getEquipments();
-  const components = getComponents();
+  const components = getComponents(selectedEquipment);
 
   const handleEquipmentChange = (value) => {
     setSelectedEquipment(value);
@@ -102,7 +104,7 @@ export default function Selection({
               disabled={!isSelectionValid}
               className="w-full h-16 text-xl font-semibold gradient-primary border-0 text-white hover:opacity-90 transition-all duration-300 shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed rounded-md"
             >
-              <span>Open Form</span>
+              <span>Create Form</span>
               <ArrowRight className="w-6 h-6 ml-3" />
             </Button>
           </div>

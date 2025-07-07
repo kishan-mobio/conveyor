@@ -12,20 +12,21 @@ import {
 } from "@/components/ui/select";
 import { Label } from "@/components/ui/label";
 import { ArrowLeft } from "lucide-react";
-import { formFields } from "@/data/field";
 import selectionData from "@/data/selection.json";
+import { useFormContext } from "@/context/formContext";
+import { useFormSelections } from "@/hooks/form";
 
-export default function FormPage({
-  setShowForm,
-  selectedComponent,
-  selectedEquipment,
-}) {
-  const initialFormData = formFields.reduce((acc, field) => {
+const initialFormData = (formFields) =>
+  formFields.reduce((acc, field) => {
     acc[field.id] = field.defaultValue ?? "";
     return acc;
   }, {});
 
-  const [formData, setFormData] = useState(initialFormData);
+export default function FormPage({ setShowForm }) {
+  const { selectedComponent, selectedEquipment } = useFormContext();
+  const { getFormFields } = useFormSelections();
+  const formFields = getFormFields();
+  const [formData, setFormData] = useState(initialFormData(formFields));
 
   const handleChange = useCallback((id, value) => {
     setFormData((prevData) => ({
@@ -82,7 +83,7 @@ export default function FormPage({
             <div className="space-y-2" key={field.id}>
               <Label
                 htmlFor={field.id}
-                className="text-sm font-semibold text-gray-700"
+                className="text-md font-semibold text-gray-700"
               >
                 {field.label}
               </Label>
