@@ -3,8 +3,7 @@
 import { useState } from "react";
 import { FormProvider } from "@/context/formContext";
 import Selection from "./selection";
-import FormPage from "./form";
-import CreateForm from "./createForm";
+import CreateForm from "./CreateForm";
 
 const FormSelectionPageContent = () => {
   const [showForm, setShowForm] = useState(false);
@@ -12,7 +11,7 @@ const FormSelectionPageContent = () => {
   return (
     <FormProvider>
       <div className="w-full h-screen">
-        {true ? (
+        {showForm ? (
           <CreateForm setShowForm={setShowForm} />
         ) : (
           <Selection setShowForm={setShowForm} />

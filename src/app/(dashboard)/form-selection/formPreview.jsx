@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback } from "react";
+import { useState, useCallback, useRef, useEffect } from "react";
 import { Input } from "@/components/ui/input";
 import {
   Select,
@@ -10,15 +10,11 @@ import {
   SelectItem,
 } from "@/components/ui/select";
 import { Label } from "@/components/ui/label";
-
-const initialFormData = (formFields) =>
-  formFields.reduce((acc, field) => {
-    acc[field.id] = field.defaultValue ?? "";
-    return acc;
-  }, {});
+import { initialFormData } from "@/utils/formMethods";
 
 export default function FormPreview({ formFields }) {
   const [formData, setFormData] = useState(initialFormData(formFields));
+  const containerRef = useRef(null);
 
   const handleChange = useCallback((id, value) => {
     setFormData((prevData) => ({
@@ -27,8 +23,18 @@ export default function FormPreview({ formFields }) {
     }));
   }, []);
 
+  useEffect(() => {
+    const container = containerRef.current;
+    if (container) {
+      container.scrollTop = container.scrollHeight;
+    }
+  }, [formFields.length]);
+
   return (
-    <div className="grid grid-cols-2 gap-4 bg-gray-50 p-4 rounded border border-gray-200">
+    <div
+      ref={containerRef}
+      className="grid grid-cols-2 gap-4 bg-gray-100 p-4 rounded border border-gray-200 max-h-80 overflow-y-auto"
+    >
       {formFields.map((field) => (
         <div className="space-y-2" key={field.id}>
           <Label
